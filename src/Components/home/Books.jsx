@@ -41,7 +41,8 @@ const Books = () => {
         ? <BookSkeletons/>
         : <div className="max-w-5xl mx-auto flex flex-wrap justify-center xl:justify-start gap-x-5 gap-y-8 px-4">
             {books && books.map(bookData => {
-              const isWishlisted = wishlist[bookData?.id] ? true : false
+              // const isWishlisted = wishlist[bookData?.id] ? true : false
+              const isWishlisted = false
               return (
                 <Book
                   toggleWishlist={toggleWishlist}
