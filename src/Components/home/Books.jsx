@@ -3,25 +3,29 @@ import { useTargetFilterStore, useWishlistStore } from "../../store/useWishlistS
 import Book from "./Book"
 import Pagination from "../Pagination"
 import { useEffect, useState } from "react"
+import useBooksData from "../../hooks/useBooksData"
+import BookSkeletons from "./BookSkeletons"
 
-const Books = ({ booksData }) => {
+const Books = () => {
   const [books, setBooks] = useState([])
 
   const wishlist = useWishlistStore(state => state.wishlist)
   const toggleWishlist = useWishlistStore(state => state.toggleBook)
   const targetFilter = useTargetFilterStore(state => state.targetFilter)
+  const { loading, booksData } = useBooksData()
   
   useEffect(() => {
     filter(targetFilter)
   }, [targetFilter])
   
   useEffect(() => {
-    setBooks(booksData.results)
+    if (!booksData) return
+    setBooks(booksData?.results)
   }, [booksData])
   
   const filter = (targetFilter) => {
     if (targetFilter == "None") {
-      setBooks(booksData.results)
+      setBooks(booksData.results || [])
       return
     }
     const filtered = books.filter(book => {
@@ -34,8 +38,9 @@ const Books = ({ booksData }) => {
   return (
     <div className="flex flex-col w-full">
       <div className="max-w-5xl mx-auto flex flex-wrap justify-center xl:justify-start gap-x-5 gap-y-8 px-4">
-        {books &&
-        books.map(bookData => {
+        {loading
+        ? <BookSkeletons/>
+        : books && books.map(bookData => {
           const isWishlisted = wishlist[bookData.id] ? true : false
           return (
             <Book
