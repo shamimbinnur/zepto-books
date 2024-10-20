@@ -4,15 +4,23 @@ import { RxHeartFilled, RxPencil1 } from "react-icons/rx";
 import { LuHash } from "react-icons/lu";
 import { IoIosRemoveCircle } from "react-icons/io";
 import { useWishlistStore } from "../../store/useWishlistStore";
+import { useEffect, useState } from "react";
 
 const Book = ({
   bookData
 }) => {
+    const [liked, setLiked] = useState(false)
+
    const firstAuthor = bookData?.authors[0]?.name.split(",")[0] || "Unknown"
    const isHomePage = window.location.pathname === "/"
 
    const { wishlist, toggleBook } = useWishlistStore()
-   const isWishlisted = wishlist[bookData?.id] ? true : false
+
+   useEffect(() => {
+      if (wishlist && wishlist[bookData?.id]) {
+        setLiked(true)
+      }
+    }, [wishlist])
 
   return (
     <div className="w-[180px] relative flex flex-col justify-center h-[270px] font-poppins border shadow-md border-[#9F9F9F] rounded-l-[6px] rounded-r-[16px] p-4">
@@ -20,7 +28,7 @@ const Book = ({
       {isHomePage ?
         <RxHeartFilled
           className={
-            `${isWishlisted ? "text-red-500" : "text-gray-300 "}
+            `${liked ? "text-red-500" : "text-gray-300 "}
             text-[30px] cursor-pointer`
           }
         />  :
