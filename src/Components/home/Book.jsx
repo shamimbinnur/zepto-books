@@ -22,7 +22,8 @@ const Book = ({
    useEffect(() => {
       if (wishlist && wishlist[bookData?.id]) {
         setLiked(true)
-      }
+      } else
+        setLiked(false)
     }, [wishlist])
 
   return (
