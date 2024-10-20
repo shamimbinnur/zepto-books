@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import useBookDetails from "../hooks/useBookDetails"
 import { LuHash } from "react-icons/lu"
 import { RxHeartFilled, RxPencil1 } from "react-icons/rx"
-import { useWishlistStore } from "../store/useWishlistStore"
+import { useWishlistStore } from "../store/useBookStore"
 import DetailsBookSkeleton from "../Components/details/DetailsBookSkeleton"
 
 const BookDetails = () => {

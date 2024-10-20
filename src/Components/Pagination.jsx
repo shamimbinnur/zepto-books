@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx"
-import { useBooksDataStore, usePageStore } from "../store/useWishlistStore"
+import { useBooksDataStore, usePageStore } from "../store/useBookStore"
 
 const Pagination = () => {
   const { booksData } = useBooksDataStore(state => state)

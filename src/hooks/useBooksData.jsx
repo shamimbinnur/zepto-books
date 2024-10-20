@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import axios from "axios"
-import { useBooksDataStore, useInitialDataStore, usePageStore, useSearchQueryStore } from "../store/useWishlistStore"
+import { useBooksDataStore, useInitialDataStore, usePageStore, useSearchQueryStore } from "../store/useBookStore"
 import { transformDataWithGenres } from "../utils/utils"
 
 const useBooksData = (delay = 500) => {

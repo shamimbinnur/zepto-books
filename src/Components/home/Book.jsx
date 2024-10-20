@@ -3,7 +3,7 @@ import { shortenString } from "../../utils/utils"
 import { RxHeartFilled, RxPencil1 } from "react-icons/rx";
 import { LuHash } from "react-icons/lu";
 import { IoIosRemoveCircle } from "react-icons/io";
-import { useWishlistStore } from "../../store/useWishlistStore";
+import { useWishlistStore } from "../../store/useBookStore";
 import { useEffect, useState } from "react";
 
 const Book = ({

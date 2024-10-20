@@ -1,5 +1,5 @@
 import { IoFilterSharp } from 'react-icons/io5'
-import { useTargetFilterStore } from '../../store/useWishlistStore'
+import { useTargetFilterStore } from '../../store/useBookStore'
 
 const FilterGenre = () => {
   const { targetFilter, setTargetFilter } = useTargetFilterStore()

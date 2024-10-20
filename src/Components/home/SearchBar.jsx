@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { useSearchQueryStore } from '../../store/useWishlistStore'
+import { useSearchQueryStore } from '../../store/useBookStore'
 import { FaSearch } from 'react-icons/fa'
 
 const SearchBar = () => {

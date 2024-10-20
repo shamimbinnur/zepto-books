@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { useTargetFilterStore } from "../../store/useWishlistStore"
+import { useTargetFilterStore } from "../../store/useBookStore"
 import Book from "./Book"
 import Pagination from "../Pagination"
 import { useEffect, useState } from "react"

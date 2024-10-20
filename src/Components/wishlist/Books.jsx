@@ -1,4 +1,4 @@
-import { useWishlistStore } from '../../store/useWishlistStore'
+import { useWishlistStore } from '../../store/useBookStore'
 import Book from '../home/Book'
 
 const Books = () => {
