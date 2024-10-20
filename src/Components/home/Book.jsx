@@ -3,18 +3,20 @@ import { shortenString } from "../../utils/utils"
 import { RxHeartFilled, RxPencil1 } from "react-icons/rx";
 import { LuHash } from "react-icons/lu";
 import { IoIosRemoveCircle } from "react-icons/io";
+import { useWishlistStore } from "../../store/useWishlistStore";
 
 const Book = ({
-  isWishlisted,
-  toggleWishlist,
   bookData
 }) => {
    const firstAuthor = bookData?.authors[0]?.name.split(",")[0] || "Unknown"
    const isHomePage = window.location.pathname === "/"
 
+   const { wishlist, toggleBook } = useWishlistStore()
+   const isWishlisted = wishlist[bookData?.id] ? true : false
+
   return (
     <div className="w-[180px] relative flex flex-col justify-center h-[270px] font-poppins border shadow-md border-[#9F9F9F] rounded-l-[6px] rounded-r-[16px] p-4">
-      <div onClick={()=> toggleWishlist(bookData)} className="absolute -top-3 right-1">
+      <div onClick={()=> toggleBook(bookData)} className="absolute -top-3 right-1">
       {isHomePage ?
         <RxHeartFilled
           className={

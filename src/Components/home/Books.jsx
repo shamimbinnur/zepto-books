@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { useTargetFilterStore, useWishlistStore } from "../../store/useWishlistStore"
+import { useTargetFilterStore } from "../../store/useWishlistStore"
 import Book from "./Book"
 import Pagination from "../Pagination"
 import { useEffect, useState } from "react"
@@ -9,7 +9,6 @@ import BookSkeletons from "./BookSkeletons"
 const Books = () => {
   const [books, setBooks] = useState([])
 
-  const { wishlist, toggleWishlist } = useWishlistStore()
   const { targetFilter } = useTargetFilterStore()
 
   const { loading, booksData } = useBooksData()
@@ -41,12 +40,8 @@ const Books = () => {
         ? <BookSkeletons/>
         : <div className="max-w-5xl mx-auto flex flex-wrap justify-center xl:justify-start gap-x-5 gap-y-8 px-4">
             {books && books.map(bookData => {
-              // const isWishlisted = wishlist[bookData?.id] ? true : false
-              const isWishlisted = false
               return (
                 <Book
-                  toggleWishlist={toggleWishlist}
-                  isWishlisted={isWishlisted}
                   key={bookData.id}
                   bookData={bookData}
                 />)
