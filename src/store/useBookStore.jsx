@@ -6,7 +6,7 @@ const useBooksDataStore = create((set) => ({
 }))
 
 const useWishlistStore = create( (set) => ({
-  wishlist: JSON.parse(localStorage.getItem("wishlist")),
+  wishlist: JSON.parse(localStorage.getItem("wishlist")) || {},
 
   addBook: (book) => {
     console.log("Adding to wishlist")
