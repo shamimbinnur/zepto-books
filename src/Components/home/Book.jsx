@@ -9,7 +9,7 @@ const Book = ({
   toggleWishlist,
   bookData
 }) => {
-   const firstAuthor = bookData.authors[0]?.name.split(",")[0] || "Unknown"
+   const firstAuthor = bookData?.authors[0]?.name.split(",")[0] || "Unknown"
    const isHomePage = window.location.pathname === "/"
 
   return (
@@ -27,18 +27,18 @@ const Book = ({
         />
       }
       </div>
-      <a href={`/book/${bookData.id}`}>
+      <a href={`/book/${bookData?.id}`}>
         <h1 className="text-sm font-medium h-[38px] leading-snug tracking-tighter text-gray-600"> 
-          {shortenString(bookData.title, 36)}
+          {shortenString(bookData?.title, 36)}
         </h1>
       </a>
       <div className="w-full h-[173px] overflow-hidden mt-2 border rounded ">
-        <img className="w-full h-full" src={bookData.formats["image/jpeg"]} alt={`${bookData.title} by ${firstAuthor}`} />
+        <img className="w-full h-full" src={bookData?.formats["image/jpeg"]} alt={`${bookData.title} by ${firstAuthor}`} />
       </div>
       <div className="flex gap-x-2 content-center text-xs pt-2 font-medium text-gray-600">
         <div className="flex gap-0.5 justify-center items-center">
           <LuHash />
-          <p>{bookData.id}</p>
+          <p>{bookData?.id}</p>
         </div>
 
         <div className="flex gap-0.5 justify-center items-center">

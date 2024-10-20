@@ -9,9 +9,9 @@ import BookSkeletons from "./BookSkeletons"
 const Books = () => {
   const [books, setBooks] = useState([])
 
-  const wishlist = useWishlistStore(state => state.wishlist)
-  const toggleWishlist = useWishlistStore(state => state.toggleBook)
-  const targetFilter = useTargetFilterStore(state => state.targetFilter)
+  const { wishlist, toggleWishlist } = useWishlistStore()
+  const { targetFilter } = useTargetFilterStore()
+
   const { loading, booksData } = useBooksData()
   
   useEffect(() => {
@@ -25,7 +25,7 @@ const Books = () => {
   
   const filter = (targetFilter) => {
     if (targetFilter == "None") {
-      setBooks(booksData.results || [])
+      setBooks(booksData?.results || [])
       return
     }
     const filtered = books.filter(book => {
@@ -37,21 +37,21 @@ const Books = () => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="max-w-5xl mx-auto flex flex-wrap justify-center xl:justify-start gap-x-5 gap-y-8 px-4">
         {loading
         ? <BookSkeletons/>
-        : books && books.map(bookData => {
-          const isWishlisted = wishlist[bookData.id] ? true : false
-          return (
-            <Book
-              toggleWishlist={toggleWishlist}
-              isWishlisted={isWishlisted}
-              key={bookData.id}
-              bookData={bookData}
-            />)
-        })}
-      </div>
-
+        : <div className="max-w-5xl mx-auto flex flex-wrap justify-center xl:justify-start gap-x-5 gap-y-8 px-4">
+            {books && books.map(bookData => {
+              const isWishlisted = wishlist[bookData?.id] ? true : false
+              return (
+                <Book
+                  toggleWishlist={toggleWishlist}
+                  isWishlisted={isWishlisted}
+                  key={bookData.id}
+                  bookData={bookData}
+                />)
+            })}
+          </div>
+        }
       <Pagination/>
     </div>
   )

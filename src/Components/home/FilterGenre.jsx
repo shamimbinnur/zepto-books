@@ -2,8 +2,7 @@ import { IoFilterSharp } from 'react-icons/io5'
 import { useTargetFilterStore } from '../../store/useWishlistStore'
 
 const FilterGenre = () => {
-  const setTargetFilter = useTargetFilterStore(state => state.setTargetFilter)
-  const targetFilter = useTargetFilterStore(state => state.targetFilter)
+  const { targetFilter, setTargetFilter } = useTargetFilterStore()
   const genreOptions = ["None", "Literature", "Fiction"]
   
   return (

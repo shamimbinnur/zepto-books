@@ -6,7 +6,7 @@ import { FaSearch } from 'react-icons/fa'
 const SearchBar = () => {
   const inputRef = useRef(null)
 
-  const { setSearchQuery } = useSearchQueryStore(state => state)
+  const { setSearchQuery } = useSearchQueryStore()
 
   const handleSearch = () => {
     setSearchQuery(inputRef.current.value)
