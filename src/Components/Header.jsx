@@ -1,5 +1,6 @@
 import { FaStar } from "react-icons/fa"
 import { ImBooks } from "react-icons/im"
+import { useNavigate } from "react-router-dom"
 
 const Nav = () => {
   const navLinks = [
@@ -11,6 +12,8 @@ const Nav = () => {
   const inActiveLinkStyle = "border border-gray-200"
   const isActive = (path) => window.location.pathname === path
 
+  const navigate = useNavigate()
+
   return (
     <header className="mx-auto max-w-5xl flex justify-between my-10 px-4">
       <a href="/">
@@ -21,9 +24,9 @@ const Nav = () => {
           {navLinks.map((link, index) => (
             <li
               key={index}
-              className={`${isActive(link.path) ? activeLinkStyle : inActiveLinkStyle} border rounded-full px-3 py-1`}
+              className={`${isActive(link.path) ? activeLinkStyle : inActiveLinkStyle} border rounded-full px-3 py-1 cursor-pointer`}
             >
-              <a className="flex items-center gap-x-1" href={link.path}>
+              <a className="flex items-center gap-x-1" onClick={()=> navigate(link.path)}>
                 <span>{link.icon}</span>{link.title}
               </a>
             </li>
