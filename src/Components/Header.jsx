@@ -23,10 +23,11 @@ const Nav = () => {
         <ul className="flex gap-x-2 md:gap-x-6 text-sm md:text-lg text-gray-700">
           {navLinks.map((link, index) => (
             <li
+              onClick={()=> navigate(link.path)}
               key={index}
               className={`${isActive(link.path) ? activeLinkStyle : inActiveLinkStyle} border rounded-full px-3 py-1 cursor-pointer`}
             >
-              <a className="flex items-center gap-x-1" onClick={()=> navigate(link.path)}>
+              <a className="flex items-center gap-x-1">
                 <span>{link.icon}</span>{link.title}
               </a>
             </li>
