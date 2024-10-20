@@ -5,6 +5,7 @@ import { LuHash } from "react-icons/lu";
 import { IoIosRemoveCircle } from "react-icons/io";
 import { useWishlistStore } from "../../store/useBookStore";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Book = ({
   bookData
@@ -15,6 +16,8 @@ const Book = ({
    const isHomePage = window.location.pathname === "/"
 
    const { wishlist, toggleBook } = useWishlistStore()
+
+   const navigate = useNavigate()
 
    useEffect(() => {
       if (wishlist && wishlist[bookData?.id]) {
@@ -37,8 +40,8 @@ const Book = ({
         />
       }
       </div>
-      <a href={`/book/${bookData?.id}`}>
-        <h1 className="text-sm font-medium h-[38px] leading-snug tracking-tighter text-gray-600"> 
+      <a onClick={ ()=> navigate(`/book/${bookData?.id}`)}>
+        <h1 className="text-sm font-medium h-[38px] cursor-pointer leading-snug tracking-tighter text-gray-600"> 
           {shortenString(bookData?.title, 36)}
         </h1>
       </a>
